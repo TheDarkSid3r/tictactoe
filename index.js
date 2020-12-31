@@ -85,12 +85,12 @@ var init = (mp, op) => {
         return true;
     };
     var checkResult = () => {
-        if (!slots.some((i) => i === false)) return result({ r: "tie" });
         var checkP = (i) => {
             return wins.some((w) => w.every((n) => slots[n] === i));
         };
         var zx = checkP(mp) ? mp : checkP(op) ? op : null;
         if (zx != null) return result({ r: "win", w: zx, i: wins.find((w) => w.every((n) => slots[n] === zx)) });
+        if (!slots.some((i) => i === false)) return result({ r: "tie" });
     };
     var move = (i) => {
         if (!canMove || slots[i] !== false) return;
